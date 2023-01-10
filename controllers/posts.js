@@ -6,17 +6,21 @@ const User = require('../models/User');
 module.exports = {
   getProfile: async (req, res) => {
     try {
-      const user = await User.find({ _id: req.user.id });
-      const posts = await Post.find({ user: req.user.id });
-      res.render('profile.ejs', { posts: posts, user: user });
+      const loggedUser = await User.findById(req.user.id);
+      const clickedUser = await User.findById(req.params.id);
+      const posts = await Post.find({ user: req.params.id });
+      console.log(loggedUser);
+      console.log(clickedUser);
+      res.render('profile.ejs', { posts: posts, clickedUser: clickedUser, loggedUser: loggedUser });
     } catch (err) {
       console.log(err);
     }
   },
   getFeed: async (req, res) => {
     try {
+      const loggedUser = await User.findById(req.user.id);
       const posts = await Post.find().sort({ createdAt: 'desc' }).lean();
-      res.render('feed.ejs', { posts: posts });
+      res.render('feed.ejs', { posts: posts, loggedUser: loggedUser });
     } catch (err) {
       console.log(err);
     }
@@ -24,10 +28,11 @@ module.exports = {
   getPost: async (req, res) => {
     try {
       const post = await Post.findById(req.params.id);
+      const loggedUser = await User.findById(req.user.id);
       const comments = await Comment.find({ post: req.params.id })
         .sort({ createdAt: 'desc' })
         .lean();
-      res.render('post.ejs', { post: post, user: req.user, comments: comments });
+      res.render('post.ejs', { post: post, loggedUser: loggedUser, comments: comments });
     } catch (err) {
       console.log(err);
     }
@@ -36,9 +41,6 @@ module.exports = {
     try {
       // Upload image to cloudinary
       const result = await cloudinary.uploader.upload(req.file.path);
-
-      // Get user information
-      const user = await User.find({ _id: req.user.id });
 
       await Post.create({
         image: result.secure_url,
@@ -49,7 +51,7 @@ module.exports = {
         userName: user[0].displayName,
       });
       console.log('Post has been added!');
-      res.redirect('/profile');
+      res.redirect(`/profile/${req.user.id}`);
     } catch (err) {
       console.log(err);
     }
@@ -77,9 +79,9 @@ module.exports = {
       // Delete post from db
       await Post.remove({ _id: req.params.id });
       console.log('Deleted Post');
-      res.redirect('/profile');
+      res.redirect(`/profile/${req.user.id}`);
     } catch (err) {
-      res.redirect('/profile');
+      res.redirect(`/profile/${req.user.id}`);
     }
   },
 };

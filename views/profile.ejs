@@ -3,12 +3,13 @@
   <div class="row mt-5">
       <div class="">
           <div class="d-flex align-items-center">
-              <img src="<%=user[0].image%>" alt="" class="rounded-circle">
-              <p class="m-0 px-3 fw-bold"><%=user[0].displayName %></p>
+              <img src="<%=clickedUser.image%>" alt="" class="rounded-circle">
+              <p class="m-0 px-3 fw-bold"><%=clickedUser.displayName %></p>
               <span class="text-nowrap"><%= posts.length%> <strong>Posts</strong></span>
           </div>
-
-          <!-- Button trigger modal -->
+          
+          <%if(clickedUser._id == loggedUser._id ){ %>
+        <!-- Button trigger modal -->
           <button type="button" class="btn btn-primary my-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Create Post
           </button>
@@ -40,6 +41,12 @@
               </div>
             </div>
           </div>
+          <%}%>
+
+          <!-- <%if(clickedUser._id !== loggedUser._id ){ %>
+          <div>Clicked User ID is <%=clickedUser._id %></div>
+          <div>Logged In User ID is <%=loggedUser._id %></div>
+          <%}%> -->
       </div>
       <div class="d-flex flex-column">
         <h3>Your Posts</h3>
