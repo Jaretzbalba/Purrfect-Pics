@@ -9,8 +9,6 @@ module.exports = {
       const loggedUser = await User.findById(req.user.id);
       const clickedUser = await User.findById(req.params.id);
       const posts = await Post.find({ user: req.params.id });
-      console.log(loggedUser);
-      console.log(clickedUser);
       res.render('profile.ejs', { posts: posts, clickedUser: clickedUser, loggedUser: loggedUser });
     } catch (err) {
       console.log(err);
@@ -42,13 +40,15 @@ module.exports = {
       // Upload image to cloudinary
       const result = await cloudinary.uploader.upload(req.file.path);
 
+      const loggedUser = await User.findById(req.user.id);
+
       await Post.create({
         image: result.secure_url,
         cloudinaryId: result.public_id,
         caption: req.body.caption,
         likes: 0,
         user: req.user.id,
-        userName: user[0].displayName,
+        userName: loggedUser.displayName,
       });
       console.log('Post has been added!');
       res.redirect(`/profile/${req.user.id}`);

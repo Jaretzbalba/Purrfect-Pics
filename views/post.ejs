@@ -12,7 +12,7 @@
           <button class="btn btn-primary fa fa-heart" type="submit"></button>
         </form>
         <h3 class="col-4 text-center"><%= post.likes %> Likes</h3>
-        <%if(post.user == loggedUser._id){ %>
+        <%if(post.user == loggedUser.id){ %>
         <form
           action="/post/deletePost/<%= post.id %>?_method=DELETE"
           method="POST"
@@ -24,7 +24,7 @@
       </div>
     </div>
     <div class="mt-2">
-      <a class="user text-decoration-none" href="/profile/<%=post.user%>"><%=post.userName%></a> <%=post.caption%>
+      <a class="user text-decoration-none text-black" href="/profile/<%=post.user%>"><%=post.userName%></a> <%=post.caption%>
     </div>
 
     <hr class="my-3" />
