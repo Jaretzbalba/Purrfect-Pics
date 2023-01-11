@@ -42,8 +42,16 @@
   max-width: 750px;
 }
 
+.post-created {
+  font-size: 0.8rem;
+}
+
 .comment-card {
   border: 1px solid rgb(185, 185, 185);
+}
+
+.comment-info > * {
+  font-size: 0.75rem;
 }
 
 .feed-image {
