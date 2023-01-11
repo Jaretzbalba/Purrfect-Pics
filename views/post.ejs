@@ -43,7 +43,7 @@
         <li class="col-12 list-unstyled mt-3 comment-card p-3">
           <span class="user col-12"><%=comments[i].userName%></span> <%=comments[i].comment%> 
           <!-- If the commentors id == logged in user id, add delete button-->
-          <%if(comments[i].userId == user[0].id){ %>
+          <%if(comments[i].userId == loggedUser.id){ %>
           <form
             action="/comment/deleteComment/<%=post._id %>/<%=comments[i]._id %>?_method=DELETE"
             method="POST"
