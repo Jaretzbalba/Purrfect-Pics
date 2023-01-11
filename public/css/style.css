@@ -29,6 +29,10 @@
   color: var(--header-color);
 }
 
+.header-text:hover {
+  color: var(--main-color);
+}
+
 .user {
   font-weight: bold;
 }
@@ -40,4 +44,14 @@
 
 .comment-card {
   border: 1px solid rgb(185, 185, 185);
+}
+
+.feed-image {
+  height: 200px;
+  width: 200px;
+}
+
+.card {
+  padding: 0;
+  margin: 0;
 }
