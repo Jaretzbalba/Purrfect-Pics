@@ -1,20 +1,26 @@
 :root {
-  --main-color: rgb(101, 67, 0);
+  --main-color: rgb(228, 195, 153);
   --secondary-color: rgb(235, 205, 106);
   --button-color: white;
-  --header-color: rgb(187, 57, 57);
-  --button-profile: rgb(187, 57, 57);
+  --button-background-color: rgb(212, 132, 111);
   --border-radius: 10px;
   --border: none;
-  --button-background-color: rgb(187, 57, 57);
+  --primary-text: rgb(236, 192, 138);
+  --secondary-text: rgb(255, 255, 255);
+}
+
+.nav-header {
+  font-size: 1.5rem;
 }
 
 .body-bg {
   background-color: var(--main-color);
-  background-image: linear-gradient(330deg, var(--main-color) 0%, var(--secondary-color) 74%);
+  /* background-image: linear-gradient(330deg, var(--main-color) 0%, var(--secondary-color) 74%); */
 }
 
-.btn-primary {
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:active {
   color: var(--button-color);
   background-color: var(--button-background-color);
   border: var(--border);
@@ -22,15 +28,27 @@
 }
 
 .btn-primary:hover {
-  box-shadow: inset 0 0 0 20rem var(--main-color);
+  transform: scale(1.05);
+}
+
+.primary-text {
+  color: var(--primary-text);
+}
+
+.primary-text:hover {
+  color: var(--primary-text);
+}
+
+.secondary-text {
+  color: var(--secondary-text);
 }
 
 .header-text {
-  color: var(--header-color);
+  color: var(--secondary-text);
 }
 
 .header-text:hover {
-  color: var(--main-color);
+  color: var(--secondary-text);
 }
 
 .user {
