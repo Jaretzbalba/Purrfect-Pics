@@ -10,7 +10,12 @@ module.exports = {
       const loggedUser = await User.findById(req.user.id);
       const clickedUser = await User.findById(req.params.id);
       const posts = await Post.find({ user: req.params.id });
-      res.render('profile.ejs', { posts: posts, clickedUser: clickedUser, loggedUser: loggedUser });
+      res.render('profile.ejs', {
+        posts: posts,
+        clickedUser: clickedUser,
+        loggedUser: loggedUser,
+        moment: moment,
+      });
     } catch (err) {
       console.log(err);
     }
@@ -19,7 +24,7 @@ module.exports = {
     try {
       const loggedUser = await User.findById(req.user.id);
       const posts = await Post.find().sort({ createdAt: 'desc' }).lean();
-      res.render('feed.ejs', { posts: posts, loggedUser: loggedUser });
+      res.render('feed.ejs', { posts: posts, loggedUser: loggedUser, moment: moment });
     } catch (err) {
       console.log(err);
     }

@@ -85,6 +85,4 @@
 .gallery-image {
   object-fit: scale-down;
   overflow: hidden;
-  height: 15rem;
-  width: 15rem;
 }
