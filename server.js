@@ -63,5 +63,5 @@ app.use('/auth', authRoutes);
 
 //Server Running
 app.listen(process.env.PORT, () => {
-  console.log('Server is running, you better catch it!');
+  console.log(`Server is running in ${process.env.NODE_ENV} mode , you better catch it!`);
 });
