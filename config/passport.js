@@ -10,7 +10,7 @@ module.exports = function (passport) {
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
         callbackURL:
           process.env.NODE_ENV == 'production'
-            ? 'https://purrfect-pics.com/auth/google/callback'
+            ? 'https://purrfect-pics.onrender.com/auth/google/callback'
             : '/auth/google/callback',
       },
       async (accessToken, refreshToken, profile, done) => {
