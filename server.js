@@ -61,7 +61,9 @@ app.use('/post', postRoutes);
 app.use('/comment', commentRoutes);
 app.use('/auth', authRoutes);
 
+const NODE_ENV = process.env.NODE_ENV || 'developement';
+
 //Server Running
 app.listen(process.env.PORT, () => {
-  console.log(`Server is running in ${process.env.NODE_ENV} mode , you better catch it!`);
+  console.log(`Server is running in ${NODE_ENV} mode , you better catch it!`);
 });
