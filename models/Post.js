@@ -14,7 +14,7 @@ const PostSchema = new mongoose.Schema({
     required: true,
   },
   likes: {
-    type: Number,
+    type: Array,
     required: true,
   },
   user: {
@@ -28,6 +28,10 @@ const PostSchema = new mongoose.Schema({
   userName: {
     type: String,
     require: true,
+  },
+  bookmarks: {
+    type: Array,
+    required: true,
   },
 });
 

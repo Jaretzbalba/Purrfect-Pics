@@ -4,14 +4,25 @@
     <img class="img-fluid p-0 m-0 rounded-top" src="<%= post.image%>" />
     <div class="col-12">
       <div class="row p-3">
-        <form
-          class="col-4"
-          action="/post/likePost/<%= post.id %>?_method=PUT"
-          method="POST"
-        >
-          <button class="btn btn-primary fa fa-heart" type="submit"></button>
-        </form>
-        <h3 class="col-4 text-center primary-text"><%= post.likes %> Likes</h3>
+        <div class="d-flex justify-content-start col-4">
+          <form
+            class="justify-content-end"
+            action="/post/bookmarkPost/<%= post.id %>?_method=PUT"
+            method="POST"
+          >
+            <button class="<%if(post.bookmarks.includes(loggedUser.id)){ %> fa-solid fa-bookmark<%} else { %> fa-regular fa-bookmark <% }%> btn btn-primary" type="submit"></button>
+          </form>
+          <form
+            action="/post/likePost/<%= post.id %>?_method=PUT"
+            method="POST"
+            class="px-2"
+          >
+            <button class="<%if(post.likes.includes(loggedUser.id)){ %> fa-solid fa-heart<%} else { %> fa-regular fa-heart <% }%> btn btn-primary" type="submit"></button>        
+          </form> 
+        </div>
+        
+        <h3 class="text-center primary-text col-4"><%= post.likes.length - 1  %> <%= (post.likes.length -1 == 1 ? `Like` : `Likes`)%></h3>
+          
         <%if(post.user == loggedUser.id){ %>
         <form
           action="/post/deletePost/<%= post.id %>?_method=DELETE"
