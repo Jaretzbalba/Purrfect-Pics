@@ -1,8 +1,8 @@
 # Purrfect Pics
 
-Purrfect Pics is fun social media app for people to share and connect through their love of cats.
+Purrfect Pics is a fun social media app for people to share and connect through their love of cats.
 
-Users can log in to access their own personal profile containing their posts. A feed containing posts from every user is available to help connect users to other fellow cat lovers. Users can interact with posts by liking and commenting to help boost community engagement.
+Users can log in to access their own personal profiles containing their posts. A feed containing posts from every user is available to help connect users to other fellow cat lovers. Users can interact with posts by liking and commenting to help boost community engagement.
 
 ## Screenshots
 
